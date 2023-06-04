@@ -1,0 +1,9 @@
+body {
+    min-height: 100vh;
+}
+.ig-mx-40 {
+    margin: 0 40px;
+}
+.m-h-full {
+    min-height: 100%;
+}
