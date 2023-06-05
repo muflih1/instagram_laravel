@@ -79,9 +79,16 @@ class AccountController extends Controller
         return redirect()->back()->with('message', 'logged out success');
     }
 
-    public function show(User $user)
+    public function show($username)
     {
-        //
+        $user = User::where('username', $username)->first();
+
+        if (!$user) return view('notfound.404');
+
+        return view('accounts.show', [
+            'user' => $user,
+            'title' => $user->name . " ($user->username)",
+        ]);
     }
 
     public function edit(User $user)
