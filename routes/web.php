@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FriendshipController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
@@ -70,4 +71,6 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('/comments/{id}/delete', 'destroy')->name('comments.destroy');
     });
+
+    Route::post('/images/upload', [ImageController::class, 'store'])->name('images.store');
 });

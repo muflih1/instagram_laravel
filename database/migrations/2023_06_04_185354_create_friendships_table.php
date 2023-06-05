@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('friendships', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('follower_id');
             $table->timestamps();
+
+            $table->foreign('follower_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

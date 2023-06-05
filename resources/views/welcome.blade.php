@@ -4,6 +4,13 @@
     @auth
         <h1>Welcome</h1>
         <h3>Hello, {{ auth()->user()->username }}</h3>
+        @foreach ($posts as $post)
+            <div>
+                <h1>{{ $post->user->username }}</h1>
+                <img src='/storage/{{ $post->image ?? $post->image }}' alt="" style="max-width: 350px;">
+                <h3>{{ $post->caption }}</h3>
+            </div>
+        @endforeach
     @endauth
 @endsection
 

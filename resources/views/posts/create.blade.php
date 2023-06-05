@@ -12,15 +12,18 @@
                         id="caption" 
                         class="form-control" 
                         placeholder="Write a caption.."
+                        rows="4"
                     >{{ old('caption') }}</textarea>
                 </div>
                 <div class="mb-3">
                     <input
                         type="file" 
-                        name="image" 
-                        id="image" 
-                        class="form-control"
+                        name="image-upload" 
+                        id="image-upload" 
+                        class="form-control mb-3"
                     />
+                    <input type="hidden" id="image" name="image" />
+                    <img src="" alt="" id="preview" style="display: none; max-width: 100%;" />
                 </div>
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary">Share</button>

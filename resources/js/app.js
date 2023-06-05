@@ -25,4 +25,30 @@ $(document).ready(() => {
             loginButton.prop("disabled", false);
         }
     }
+
+    $("#image-upload").on("change", function () {
+        let formData = new FormData();
+        formData.append("image-upload", $(this)[0].files[0]);
+        let csrfToken = $("html").data("token");
+
+        $.ajax({
+            url: "http://127.0.0.1:8000/images/upload",
+            headers: {
+                "X-CSRF-TOKEN": csrfToken,
+            },
+            method: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $("#preview")
+                    .attr(
+                        "src",
+                        "http://127.0.0.1:8000/storage/" + response.uri
+                    )
+                    .show();
+                $("#image").val(response.uri);
+            },
+        });
+    });
 });
